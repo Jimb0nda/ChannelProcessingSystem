@@ -6,9 +6,16 @@ def main():
     inputs = channelData()
     parameters = parameterData()
 
-    z = VectorArithmetic.function2(parameters,inputs)
+    #While value b has not been added to the parameters dictionary, keep looping
+    while("b" not in parameters):
 
-    print(z)
+        # For each attribute of module VectorArithmetic, if its callable, call it
+        for i in dir(VectorArithmetic):
+            function = getattr(VectorArithmetic,i)
+            if callable(function):
+                function(parameters,inputs)
+
+    print(parameters["b"])
 
 #Function to read in channel data from channels.txt file.
 #Returns an array of float values
@@ -23,16 +30,24 @@ def channelData():
 
     return chanData
 
+
+
 #Function to read in parameter data from parameters.txt file.
 #Returns an array of float values
 def parameterData():
 
-    #Read data from text files, using only the column at index 1 to ignore variable names
-    #Casts vaues to float and creates an array
-    paramData = np.genfromtxt("parameters.txt", dtype=float,
-                     usecols=(1), encoding=None, delimiter=",")
+    #Extract key and value pair from text file and place into dictionary
+    f = open("parameters.txt", 'r')
+    paramData = {}
+    for line in f:
+        key, value = line.strip().split(',')
+        paramData[key.strip()] = float(value.strip())
+
+    f.close()
 
     return paramData
+
+
 
 if __name__ == '__main__':
     main()
