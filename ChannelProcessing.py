@@ -22,7 +22,7 @@ def main():
 def channelData():
 
     #Read data from text files, casting vaues to float and creating an array
-    data = np.genfromtxt("channels.txt", dtype=float,
+    data = np.genfromtxt("ChannelProcessingSystem\channels.txt", dtype=float,
                      encoding=None, delimiter=",")
 
     #Delete the first element in the array to remove the array name 'X'
@@ -37,7 +37,7 @@ def channelData():
 def parameterData():
 
     #Extract key and value pair from text file and place into dictionary
-    f = open("parameters.txt", 'r')
+    f = open("ChannelProcessingSystem\parameters.txt", 'r')
     paramData = {}
     for line in f:
         key, value = line.strip().split(',')
