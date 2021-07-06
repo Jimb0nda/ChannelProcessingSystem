@@ -5,9 +5,10 @@ def main():
 
     inputs = channelData()
     parameters = parameterData()
+    output = 'b'
 
     #While value b has not been added to the parameters dictionary, keep looping
-    while("b" not in parameters):
+    while(output not in parameters):
 
         # For each attribute of module VectorArithmetic, if its callable, call it
         for i in dir(VectorArithmetic):
@@ -15,14 +16,14 @@ def main():
             if callable(function):
                 function(parameters,inputs)
 
-    print(parameters["b"])
+    print(parameters[output])
 
 #Function to read in channel data from channels.txt file.
 #Returns an array of float values
 def channelData():
 
     #Read data from text files, casting vaues to float and creating an array
-    data = np.genfromtxt("ChannelProcessingSystem\channels.txt", dtype=float,
+    data = np.genfromtxt("ChannelProcessingSystem/channels.txt", dtype=float,
                      encoding=None, delimiter=",")
 
     #Delete the first element in the array to remove the array name 'X'
@@ -37,7 +38,7 @@ def channelData():
 def parameterData():
 
     #Extract key and value pair from text file and place into dictionary
-    f = open("ChannelProcessingSystem\parameters.txt", 'r')
+    f = open("ChannelProcessingSystem/parameters.txt", 'r')
     paramData = {}
     for line in f:
         key, value = line.strip().split(',')
