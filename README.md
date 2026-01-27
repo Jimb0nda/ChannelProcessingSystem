@@ -25,6 +25,4 @@ Function 4:
 
 Channels are arrays of data and are denoted with a capital letter, e.g. Y.  Metrics and parameters are scalars and are denoted with a lowercase letter, e.g. m.  Note that b is the only metric in the above example.  X, m and c are known.
 
-Can you design and implement a flexible and generic system for processing channel data using the above functions?  Feel free to use a language of your choice.
-
 From the channels.txt and parameters.txt files provided, what is the value of the metric b?
